@@ -1,0 +1,95 @@
+Bible Reading App #details are given using python's comment notation, simply because I'm writing the first prototype in python
+
+USE CASE Description
+
+1. The user can query any set of verses from the Bible. These can be from any version of the Bible, any translation or language.
+2. The user can toggle ch&vs number visibility, background colour, text colour, formatting, and subheadings.
+
+
+Triggers
+
+1. The user queries the Bible using a search box and submit button (or pressing the Enter key)
+2. Toggles will be in the settings menu, and will open a pop-up window with the toggles in GUI.
+
+
+Actors
+
+1. The user, making the query and reading the result;
+
+2. The Bible database, queried by the user;
+
+	a. Translation 	#This is the metadata table for the Bible table
+		t_id 		#relates to the Bible table; the three characters in this string match the three characters that will be appended to the front of each id value in the Bible table
+		name 		#the full and official name of the translation
+		type 		#a category for each translation TBD
+		language 	#the language of the translation, not of the original work
+		
+	b. Bible 		#this table will store everything in the various Bible sql files from GitHub. This is the primary table of the database
+		B_id 		#same as in the GitHub files, but in order that all translations can be in the same table, the translation's code has to be appended to the front of the value
+		b 			#book; relates to the Book table
+		c 			#chapter
+		v 			#verse; relates to the Verse table
+		text 		#this is the part that will be displayed in the text box
+		
+	c. Book 		#nested under the Bible table; stores metadata for each book of the Bible
+		b_id 		#autonumber for the book, relates to the b table in Bible
+		title 		#the official English title of the book
+		short 		#a shorthand code for the book, to use as an alternative to writing the entire name
+		author 		#name of the known author, or name of alleged author (with question mark), or anonymous
+		year 		#integer where negative values refer to BC
+		summary		#TBD where I will find these summaries
+		
+	d. Verse 		#nested under the Bible table; stores data for the purpose of displaying the Bible text as it was meant to be displayed
+		v_id		#this is the autonumber in the GitHub files under the 'id' column
+		break 		#what goes between this verse and the next verse? e.g. a space, a line break, three line breaks, a line break and an indentation
+		o_language 	#the original language that this particular verse was written in, this is because some books were written in multiple languages
+		poetry 		#a boolean where False means that it's prose
+
+
+3. The GUI, which facilitates user/information interaction
+
+	a. Menu at the top
+		File
+			Close
+		Settings
+			Display
+			Filters
+	
+	b. First Row
+		'Search' Label
+		Query Box
+		'Submit' Button
+	
+	c. Second Row
+		Text box for displaying the text, will take up most of the screen, has a scrollbar
+	
+	d. Third Row
+		Labels with metadata about the translation called
+
+
+Preconditions
+
+1. One user is available
+2. At least one translation of the Bible is available (table inside the database)
+3. The programming language can call a database made in sqlite3 by generating SQL commands
+4. The user can interact with the database, but cannot change it, except to add or remove whole translations of the Bible from the Bible table
+
+
+Goals
+
+1. The user reads the Bible in whichever format he wants
+
+
+Not Available
+
+1. Failed Conclusion, Extensions (Alternatives)
+
+
+Steps of Execution
+
+1. The user enters the search string into a query box and either presses the Enter key or the submit button
+2. The result is stored in a special memory area as a list of strings
+3. The result is printed in a large text box
+4. The search string remains in the query box so that it can be altered and resubmitted
+5. The user can change how the result is formatted at any time in the settings.
+
