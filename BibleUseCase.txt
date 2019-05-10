@@ -3,7 +3,7 @@ Bible Reading App #details are given using python's comment notation, simply bec
 USE CASE Description
 
 1. The user can query any set of verses from the Bible. These can be from any version of the Bible, any translation or language.
-2. The user can toggle ch&vs number visibility, background colour, text colour, formatting, and subheadings.
+2. The user can toggle chapter/verse number visibility, background colour, text colour, formatting, and subheadings.
 
 
 Triggers
@@ -78,11 +78,6 @@ Preconditions
 Goals
 
 1. The user reads the Bible in whichever format he wants
-
-
-Not Available
-
-1. Failed Conclusion, Extensions (Alternatives)
 
 
 Steps of Execution
