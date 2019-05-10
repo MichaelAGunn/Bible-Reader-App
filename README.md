@@ -4,7 +4,7 @@ This app will display any set of queried verses in the Bible. I intend to includ
 I intend to add sentiment analysis and visualization tools once the basic reader is finished.
 This app will be free of charge and freely available for Windows Desktop, Android, and maybe iOS.
 
-To start, I will be using public domain translations in English. Special thanks to scrollmapper for his bible_databases project
+To start, I will be using public domain translations in English. Special thanks to scrollmapper for his bible_databases project.
 
 I'll eventually expand into more contemporary translations and I will include some translations from other languages.
 
