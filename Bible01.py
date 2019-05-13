@@ -1,4 +1,5 @@
-#Open the csv file and create the list of lists
+#This is a basic prototype that simply
+#opens the csv file and creates a dictionary
 from csv import reader
 
 opened_file = open('kjv.csv')
