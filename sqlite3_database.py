@@ -34,7 +34,7 @@ def create_db():
 	
 	#execute inner functions
 	create_Bible_table()
-	create_Metadata_table()
+	#create_Metadata_table()
 
 create_db()
 print("DB created.")
