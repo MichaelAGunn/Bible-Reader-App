@@ -39,10 +39,12 @@ def create_db():
 create_db()
 print("DB created.")
 
+'''
 def delete_all_rows():
 	print("may or may not delete")
 	
 delete_all_rows()
+'''
 
 #inserting rows into the Bible table using a csv file
 def open_csv(which_tran):
@@ -56,22 +58,64 @@ def open_csv(which_tran):
 current_tran = 'kjv'
 current_dict = open_csv(current_tran)
 print("The " + current_tran + ".csv file is open.")
-print(current_dict[1000])
 
 
+#insert data one line at a time
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 1, 'first')")
+'''
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 2, 'second')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 3, 'third')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 4, 'fourth')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 5, 'fifth')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 6, 'sixth')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 7, 'seventh')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 8, 'eighth')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 9, 'ninth')")
+c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('kjv', 1, 1, 10, 'tenth')")
+'''
+
+
+'''
+#sample data just for something quick to work with
+def insert_trash():
+	book = 1
+	chapter = 1
+	verse = 1
+	text = ['not', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'ninteenth', 'twentieth']
+	try:
+		while x < 20:
+			c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('" + tran + "', " + book + ", " + chapter + ", " + verse + ", '" + text[verse] + "')") #This causes an error.
+			verse += 1
+	except sqlite3.OperationalError:
+		print("OPERATIONAL ERROR: Row could not inserted.")
+	except:
+		print("ERROR: Function doesn't work.")
+
+	conn.commit
+
+insert_trash()
+'''
+
+
+'''
 #now the data goes into the table in the database file
 def insert_Bible_rows(which_dict):
 	for row in which_dict:
+		tran = current_tran
 		book = str(row[1])
 		chapter = str(row[2])
 		verse = str(row[3])
 		text = str(row[4])
-		print(book)
-
-		c.execute("INSERT INTO Bible VALUES(tran, book, chapter, verse, text), ('" + current_tran + "', " + book + ", " + chapter + ", " + verse + ", '" + text + "')") #This causes an error.
+		print(text)
+		try:
+			c.execute("INSERT INTO (tran, book, chapter, verse, text) Bible VALUES ('" + tran + "', " + book + ", " + chapter + ", " + verse + ", '" + text + "')") #This causes an error.
+		except sqlite3.OperationalError:
+			print("OPERATIONAL ERROR: Row could not inserted.")
+		except:
+			print("ERROR: Function doesn't work.")
 	conn.commit
 insert_Bible_rows(current_dict)
-
+'''
 
 
 '''
@@ -82,5 +126,6 @@ print("Here.")
 '''
 
 #close everything
+print("END")
 c.close()
 conn.close()
