@@ -12,10 +12,6 @@ root.title(TITLE)
 canvas = tk.Canvas(root, height=HEIGHT, width=WIDTH)
 canvas.pack()
 
-#Defining the quit command
-def quit_app(event=None):
-	root.quit()
-
 #----1st frame----
 #Frame
 frame1 = tk.Frame(root, bg='red')
